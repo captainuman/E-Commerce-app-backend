@@ -1,7 +1,7 @@
 import express from 'express'
 
 const router = express.Router()
-let ordercart = [[
+let ordercart = [
 {
 "id": "MOB-1003",
 "name": "OnePlus Nord CE 3",
@@ -82,7 +82,6 @@ let ordercart = [[
 "5G"
 ]
 }
-]
 ]
 
 router.get('/' , (req,res)=>{
