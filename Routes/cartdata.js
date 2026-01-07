@@ -1,0 +1,1621 @@
+import express from 'express'
+
+const router = express.Router()
+let cartdata =[
+  {
+    "id": "MOB-1001",
+    "name": "iPhone 14",
+    "price": 79999,
+    "quantity": 1,
+    "companyname": "Apple India",
+    "brand": "Apple",
+    "description": "Premium iOS smartphone with powerful chipset, excellent camera system, secure ecosystem, high quality display, smooth performance, long software support and premium build.",
+    "color": "Midnight",
+    "material": "Glass & Steel",
+    "about": [
+      "Powerful processor",
+      "Smooth iOS",
+      "Excellent camera",
+      "Premium build",
+      "Face ID",
+      "Long updates",
+      "Strong security",
+      "Good battery life",
+      "High resale value",
+      "Reliable performance"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9",
+      "https://images.unsplash.com/photo-1598327105666-5b89351aff97",
+      "https://images.unsplash.com/photo-1603898037225-70cdd6e2f9d7",
+      "https://images.unsplash.com/photo-1616348436168-de43ad0db179",
+      "https://images.unsplash.com/photo-1633113213888-7fa6c4b5e2c2"
+    ],
+    "discount": 8,
+    "size": { "ram": "6GB", "storage": "128GB" },
+    "categories": ["Mobile Phones", "Smartphones", "iOS"]
+  },
+
+  {
+    "id": "MOB-1002",
+    "name": "Samsung Galaxy S23",
+    "price": 74999,
+    "quantity": 1,
+    "companyname": "Samsung India",
+    "brand": "Samsung",
+    "description": "Flagship Android phone with AMOLED display, top-tier processor, premium design, advanced cameras, fast charging and 5G connectivity.",
+    "color": "Phantom Black",
+    "material": "Glass & Aluminum",
+    "about": [
+      "AMOLED display",
+      "Flagship performance",
+      "Excellent camera",
+      "Premium design",
+      "Fast charging",
+      "Wireless charging",
+      "5G support",
+      "Stereo speakers",
+      "Smooth UI",
+      "Reliable battery"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1674410524305-44b5d6f5c74e",
+      "https://images.unsplash.com/photo-1598327105666-5b89351aff97",
+      "https://images.unsplash.com/photo-1580910051074-3eb694886505",
+      "https://images.unsplash.com/photo-1616348436168-de43ad0db179",
+      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9"
+    ],
+    "discount": 10,
+    "size": { "ram": "8GB", "storage": "256GB" },
+    "categories": ["Mobile Phones", "Smartphones", "Android", "5G"]
+  },
+
+  {
+    "id": "MOB-1003",
+    "name": "OnePlus Nord CE 3",
+    "price": 24999,
+    "quantity": 1,
+    "companyname": "OnePlus India",
+    "brand": "OnePlus",
+    "description": "Mid-range smartphone offering clean UI, fast charging, AMOLED display, solid performance and sleek design.",
+    "color": "Aqua Surge",
+    "material": "Plastic & Glass",
+    "about": [
+      "Clean OxygenOS",
+      "Fast charging",
+      "AMOLED display",
+      "5G support",
+      "Lightweight",
+      "Good camera",
+      "Smooth UI",
+      "Reliable battery",
+      "Good thermals",
+      "Value for money"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1605236453806-6ff36851218e",
+      "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd",
+      "https://images.unsplash.com/photo-1580910051074-3eb694886505",
+      "https://images.unsplash.com/photo-1598327105666-5b89351aff97",
+      "https://images.unsplash.com/photo-1616348436168-de43ad0db179"
+    ],
+    "discount": 15,
+    "size": { "ram": "8GB", "storage": "128GB" },
+    "categories": ["Mobile Phones", "Mid Range", "5G"]
+  },
+
+  {
+    "id": "MOB-1004",
+    "name": "Redmi Note 12",
+    "price": 14999,
+    "quantity": 1,
+    "companyname": "Xiaomi India",
+    "brand": "Redmi",
+    "description": "Affordable smartphone with AMOLED display, decent performance, large battery, fast charging and modern design.",
+    "color": "Blue",
+    "material": "Plastic",
+    "about": [
+      "Affordable price",
+      "AMOLED display",
+      "Large battery",
+      "Fast charging",
+      "Decent camera",
+      "Slim design",
+      "Good daily performance",
+      "MIUI features",
+      "Good value",
+      "Reliable build"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1598327105666-5b89351aff97",
+      "https://images.unsplash.com/photo-1580910051074-3eb694886505",
+      "https://images.unsplash.com/photo-1603898037225-70cdd6e2f9d7",
+      "https://images.unsplash.com/photo-1616348436168-de43ad0db179",
+      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9"
+    ],
+    "discount": 12,
+    "size": { "ram": "6GB", "storage": "128GB" },
+    "categories": ["Mobile Phones", "Budget Phones", "Android"]
+  },
+
+  {
+    "id": "MOB-1005",
+    "name": "Realme Narzo 60",
+    "price": 17999,
+    "quantity": 1,
+    "companyname": "Realme India",
+    "brand": "Realme",
+    "description": "Stylish smartphone with smooth display, strong battery backup, decent camera and fast charging support.",
+    "color": "Green",
+    "material": "Plastic",
+    "about": [
+      "Stylish design",
+      "Smooth display",
+      "Fast charging",
+      "Good battery",
+      "Decent camera",
+      "Lightweight",
+      "Good UI",
+      "Daily performance",
+      "Affordable",
+      "Reliable usage"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1580910051074-3eb694886505",
+      "https://images.unsplash.com/photo-1598327105666-5b89351aff97",
+      "https://images.unsplash.com/photo-1616348436168-de43ad0db179",
+      "https://images.unsplash.com/photo-1603898037225-70cdd6e2f9d7",
+      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9"
+    ],
+    "discount": 18,
+    "size": { "ram": "8GB", "storage": "128GB" },
+    "categories": ["Mobile Phones", "Mid Range", "Android"]
+  },
+
+  // ---------- ACCESSORIES (26–50) ----------
+
+  {
+    "id": "ACC-2001",
+    "name": "65W Fast Charger",
+    "price": 2499,
+    "quantity": 1,
+    "companyname": "Realme Accessories",
+    "brand": "Realme",
+    "description": "High speed fast charger with safety protection, compact design and wide device compatibility.",
+    "color": "White",
+    "material": "Plastic",
+    "about": [
+      "Fast charging",
+      "Overheat protection",
+      "Compact size",
+      "Durable build",
+      "Energy efficient",
+      "Safe usage",
+      "Travel friendly",
+      "Wide compatibility",
+      "Lightweight",
+      "Long lifespan"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1583863788434-e58a36330cf0",
+      "https://images.unsplash.com/photo-1603791440384-56cd371ee9a7",
+      "https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6",
+      "https://images.unsplash.com/photo-1593642532973-d31b6557fa68",
+      "https://images.unsplash.com/photo-1580910051074-3eb694886505"
+    ],
+    "discount": 20,
+    "size": { "height": "5cm", "weight": "120g" },
+    "categories": ["Mobile Accessories", "Chargers", "Fast Charging"]
+  },
+
+  {
+    "id": "ACC-2002",
+    "name": "Wireless Earbuds",
+    "price": 4999,
+    "quantity": 1,
+    "companyname": "boAt Lifestyle",
+    "brand": "boAt",
+    "description": "True wireless earbuds with deep bass, clear audio, long battery life and ergonomic design.",
+    "color": "Black",
+    "material": "Plastic",
+    "about": [
+      "Deep bass",
+      "Clear sound",
+      "Touch controls",
+      "Fast pairing",
+      "Comfortable fit",
+      "Water resistant",
+      "Long battery",
+      "Compact case",
+      "Low latency",
+      "Good calls"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1600294037681-c80b4cb5b434",
+      "https://images.unsplash.com/photo-1590658268037-6bf12165a8df",
+      "https://images.unsplash.com/photo-1585386959984-a4155228f0e0",
+      "https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb",
+      "https://images.unsplash.com/photo-1629984557780-4dde229a83f9"
+    ],
+    "discount": 25,
+    "size": { "height": "4cm", "weight": "60g" },
+    "categories": ["Mobile Accessories", "Audio", "Wireless"]
+  },
+  {
+    "id": "ACC-2003",
+    "name": "10000mAh Power Bank",
+    "price": 1999,
+    "quantity": 1,
+    "companyname": "Mi India",
+    "brand": "Mi",
+    "description": "Compact power bank with fast charging support, durable build, multiple safety protections and easy portability.",
+    "color": "Black",
+    "material": "Aluminum",
+    "about": [
+      "Fast charging support",
+      "Compact size",
+      "Dual USB output",
+      "Overcharge protection",
+      "Durable metal body",
+      "Travel friendly",
+      "Reliable performance",
+      "LED indicators",
+      "Safe usage",
+      "Long lifespan"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1603791440384-56cd371ee9a7",
+      "https://images.unsplash.com/photo-1583863788434-e58a36330cf0",
+      "https://images.unsplash.com/photo-1593642532973-d31b6557fa68",
+      "https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6",
+      "https://images.unsplash.com/photo-1580910051074-3eb694886505"
+    ],
+    "discount": 22,
+    "size": { "height": "9cm", "weight": "230g" },
+    "categories": ["Mobile Accessories", "Power Banks", "Charging"]
+  },
+
+  {
+    "id": "ACC-2004",
+    "name": "Silicone Back Cover",
+    "price": 399,
+    "quantity": 1,
+    "companyname": "Spigen India",
+    "brand": "Spigen",
+    "description": "Shock-absorbing silicone back cover offering grip, scratch resistance and lightweight protection.",
+    "color": "Transparent",
+    "material": "Silicone",
+    "about": [
+      "Shock resistant",
+      "Scratch protection",
+      "Slim design",
+      "Anti-slip grip",
+      "Easy installation",
+      "Lightweight",
+      "Durable material",
+      "Camera protection",
+      "Precise cutouts",
+      "Pocket friendly"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1580910051074-3eb694886505",
+      "https://images.unsplash.com/photo-1603898037225-70cdd6e2f9d7",
+      "https://images.unsplash.com/photo-1598327105666-5b89351aff97",
+      "https://images.unsplash.com/photo-1616348436168-de43ad0db179",
+      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9"
+    ],
+    "discount": 30,
+    "size": { "height": "15cm", "weight": "40g" },
+    "categories": ["Mobile Accessories", "Protection", "Back Covers"]
+  },
+
+  {
+    "id": "ACC-2005",
+    "name": "Tempered Glass Screen Protector",
+    "price": 299,
+    "quantity": 1,
+    "companyname": "Caseology",
+    "brand": "Caseology",
+    "description": "High transparency tempered glass offering scratch resistance, smooth touch and edge-to-edge screen protection.",
+    "color": "Clear",
+    "material": "Tempered Glass",
+    "about": [
+      "Scratch resistant",
+      "High clarity",
+      "Smooth touch",
+      "Easy installation",
+      "Bubble free",
+      "Edge protection",
+      "Oleophobic coating",
+      "Fingerprint resistant",
+      "Durable glass",
+      "Affordable protection"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1580910051074-3eb694886505",
+      "https://images.unsplash.com/photo-1603791440384-56cd371ee9a7",
+      "https://images.unsplash.com/photo-1593642532973-d31b6557fa68",
+      "https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6",
+      "https://images.unsplash.com/photo-1583863788434-e58a36330cf0"
+    ],
+    "discount": 35,
+    "size": { "height": "14cm", "weight": "25g" },
+    "categories": ["Mobile Accessories", "Screen Protectors", "Protection"]
+  },
+
+  {
+    "id": "ACC-2006",
+    "name": "Bluetooth Speaker Mini",
+    "price": 2999,
+    "quantity": 1,
+    "companyname": "JBL India",
+    "brand": "JBL",
+    "description": "Portable Bluetooth speaker with powerful sound, deep bass, water resistance and compact design.",
+    "color": "Blue",
+    "material": "Plastic & Rubber",
+    "about": [
+      "Loud sound output",
+      "Deep bass",
+      "Portable size",
+      "Water resistant",
+      "Bluetooth connectivity",
+      "Long battery life",
+      "Durable build",
+      "Fast pairing",
+      "Good clarity",
+      "Outdoor friendly"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1",
+      "https://images.unsplash.com/photo-1590658268037-6bf12165a8df",
+      "https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb",
+      "https://images.unsplash.com/photo-1629984557780-4dde229a83f9",
+      "https://images.unsplash.com/photo-1585386959984-a4155228f0e0"
+    ],
+    "discount": 18,
+    "size": { "height": "8cm", "weight": "280g" },
+    "categories": ["Mobile Accessories", "Audio", "Speakers"]
+  },
+  {
+    "id": "ACC-2007",
+    "name": "USB Type-C Cable",
+    "price": 499,
+    "quantity": 1,
+    "companyname": "Amazon Basics",
+    "brand": "Amazon Basics",
+    "description": "Durable USB Type-C cable supporting fast charging and high-speed data transfer with reinforced connectors.",
+    "color": "Black",
+    "material": "Nylon Braided",
+    "about": [
+      "Fast charging support",
+      "High data transfer speed",
+      "Strong braided build",
+      "Tangle resistant",
+      "Durable connectors",
+      "Wide compatibility",
+      "Lightweight",
+      "Travel friendly",
+      "Long cable life",
+      "Reliable performance"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1580910051074-3eb694886505",
+      "https://images.unsplash.com/photo-1603791440384-56cd371ee9a7",
+      "https://images.unsplash.com/photo-1593642532973-d31b6557fa68",
+      "https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6",
+      "https://images.unsplash.com/photo-1583863788434-e58a36330cf0"
+    ],
+    "discount": 25,
+    "size": { "height": "100cm", "weight": "50g" },
+    "categories": ["Mobile Accessories", "Cables", "Charging"]
+  },
+  {
+    "id": "ACC-2008",
+    "name": "Car Mobile Charger",
+    "price": 899,
+    "quantity": 1,
+    "companyname": "Portronics India",
+    "brand": "Portronics",
+    "description": "Dual-port car charger with fast charging support and built-in safety protection for on-the-go charging.",
+    "color": "Black",
+    "material": "Plastic & Metal",
+    "about": [
+      "Fast charging",
+      "Dual USB ports",
+      "Car friendly design",
+      "Overcurrent protection",
+      "Compact size",
+      "Heat resistant",
+      "Durable build",
+      "Stable charging",
+      "Easy plug-in",
+      "Safe usage"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6",
+      "https://images.unsplash.com/photo-1593642532973-d31b6557fa68",
+      "https://images.unsplash.com/photo-1583863788434-e58a36330cf0",
+      "https://images.unsplash.com/photo-1603791440384-56cd371ee9a7",
+      "https://images.unsplash.com/photo-1580910051074-3eb694886505"
+    ],
+    "discount": 20,
+    "size": { "height": "6cm", "weight": "90g" },
+    "categories": ["Mobile Accessories", "Car Accessories", "Charging"]
+  },
+  {
+    "id": "ACC-2009",
+    "name": "Mobile Phone Stand",
+    "price": 599,
+    "quantity": 1,
+    "companyname": "Dyazo",
+    "brand": "Dyazo",
+    "description": "Adjustable mobile phone stand suitable for desks, video calls, streaming and hands-free usage.",
+    "color": "Silver",
+    "material": "Aluminum",
+    "about": [
+      "Adjustable angle",
+      "Strong metal body",
+      "Anti-slip base",
+      "Hands-free usage",
+      "Compact design",
+      "Desk friendly",
+      "Stable support",
+      "Foldable",
+      "Lightweight",
+      "Long lasting"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1598327105666-5b89351aff97",
+      "https://images.unsplash.com/photo-1603898037225-70cdd6e2f9d7",
+      "https://images.unsplash.com/photo-1616348436168-de43ad0db179",
+      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9",
+      "https://images.unsplash.com/photo-1580910051074-3eb694886505"
+    ],
+    "discount": 18,
+    "size": { "height": "12cm", "weight": "180g" },
+    "categories": ["Mobile Accessories", "Stands", "Utility"]
+  },
+  {
+    "id": "ACC-2010",
+    "name": "Selfie Stick with Tripod",
+    "price": 1499,
+    "quantity": 1,
+    "companyname": "Mi India",
+    "brand": "Mi",
+    "description": "Extendable selfie stick with built-in tripod and Bluetooth remote for photography and video recording.",
+    "color": "Black",
+    "material": "Plastic & Aluminum",
+    "about": [
+      "Bluetooth remote",
+      "Tripod support",
+      "Extendable design",
+      "Stable grip",
+      "Lightweight",
+      "Easy portability",
+      "Strong build",
+      "Good balance",
+      "Travel friendly",
+      "Smooth operation"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f",
+      "https://images.unsplash.com/photo-1519183071298-a2962be96cbd",
+      "https://images.unsplash.com/photo-1503602642458-232111445657",
+      "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f",
+      "https://images.unsplash.com/photo-1580910051074-3eb694886505"
+    ],
+    "discount": 22,
+    "size": { "height": "70cm", "weight": "240g" },
+    "categories": ["Mobile Accessories", "Photography", "Tripods"]
+  },
+  {
+    "id": "ACC-2011",
+    "name": "Wireless Charging Pad",
+    "price": 1999,
+    "quantity": 1,
+    "companyname": "Samsung Accessories",
+    "brand": "Samsung",
+    "description": "Fast wireless charging pad with intelligent power control, compact design, and non-slip surface.",
+    "color": "Black",
+    "material": "Plastic & Rubber",
+    "about": [
+      "Fast wireless charging",
+      "Non-slip surface",
+      "Overheat protection",
+      "Compact design",
+      "Cable included",
+      "Qi compatible",
+      "Stable charging",
+      "LED indicator",
+      "Durable build",
+      "Easy placement"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1583863788434-e58a36330cf0",
+      "https://images.unsplash.com/photo-1603791440384-56cd371ee9a7",
+      "https://images.unsplash.com/photo-1593642532973-d31b6557fa68",
+      "https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6",
+      "https://images.unsplash.com/photo-1580910051074-3eb694886505"
+    ],
+    "discount": 15,
+    "size": { "height": "9cm", "weight": "180g" },
+    "categories": ["Mobile Accessories", "Wireless Chargers", "Charging"]
+  },
+  {
+    "id": "ACC-2012",
+    "name": "Magnetic Car Mobile Holder",
+    "price": 799,
+    "quantity": 1,
+    "companyname": "Spigen India",
+    "brand": "Spigen",
+    "description": "Strong magnetic car holder for secure phone mounting during navigation and driving.",
+    "color": "Black",
+    "material": "Metal & Plastic",
+    "about": [
+      "Strong magnetic grip",
+      "360-degree rotation",
+      "Easy installation",
+      "Dashboard friendly",
+      "Stable holding",
+      "Compact design",
+      "Durable material",
+      "Hands-free usage",
+      "Universal compatibility",
+      "Travel safe"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9",
+      "https://images.unsplash.com/photo-1603898037225-70cdd6e2f9d7",
+      "https://images.unsplash.com/photo-1598327105666-5b89351aff97",
+      "https://images.unsplash.com/photo-1616348436168-de43ad0db179",
+      "https://images.unsplash.com/photo-1580910051074-3eb694886505"
+    ],
+    "discount": 20,
+    "size": { "height": "7cm", "weight": "110g" },
+    "categories": ["Mobile Accessories", "Car Accessories", "Holders"]
+  },
+  {
+    "id": "ACC-2013",
+    "name": "Bluetooth Neckband",
+    "price": 1999,
+    "quantity": 1,
+    "companyname": "OnePlus Audio",
+    "brand": "OnePlus",
+    "description": "Comfortable Bluetooth neckband with clear audio, fast charging, and long battery life.",
+    "color": "Blue",
+    "material": "Silicone & Plastic",
+    "about": [
+      "Clear sound quality",
+      "Fast charging",
+      "Magnetic earbuds",
+      "Lightweight",
+      "Comfortable fit",
+      "Good battery life",
+      "Low latency",
+      "Bluetooth 5.0",
+      "Durable cable",
+      "Easy controls"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1590658268037-6bf12165a8df",
+      "https://images.unsplash.com/photo-1585386959984-a4155228f0e0",
+      "https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb",
+      "https://images.unsplash.com/photo-1629984557780-4dde229a83f9",
+      "https://images.unsplash.com/photo-1600294037681-c80b4cb5b434"
+    ],
+    "discount": 18,
+    "size": { "height": "40cm", "weight": "140g" },
+    "categories": ["Mobile Accessories", "Audio", "Neckbands"]
+  },
+
+  {
+    "id": "ACC-2014",
+    "name": "Smart Watch Series 5",
+    "price": 3499,
+    "quantity": 1,
+    "companyname": "Noise India",
+    "brand": "Noise",
+    "description": "Feature-rich smartwatch with fitness tracking, notifications, long battery life, and stylish design.",
+    "color": "Black",
+    "material": "Plastic & Silicone",
+    "about": [
+      "Fitness tracking",
+      "Heart rate monitor",
+      "Notification alerts",
+      "Long battery life",
+      "Water resistant",
+      "Stylish design",
+      "Touch display",
+      "Multiple sports modes",
+      "Lightweight",
+      "Comfortable strap"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30",
+      "https://images.unsplash.com/photo-1517433456452-f9633a875f6f",
+      "https://images.unsplash.com/photo-1551817958-20204d6ab2a5",
+      "https://images.unsplash.com/photo-1546868871-7041f2a55e12",
+      "https://images.unsplash.com/photo-1579586337278-3befd40fd17a"
+    ],
+    "discount": 25,
+    "size": { "height": "45mm", "weight": "48g" },
+    "categories": ["Smart Devices", "Wearables", "Smart Watches"]
+  },
+
+  {
+    "id": "ACC-2015",
+    "name": "Fitness Band Pro",
+    "price": 2499,
+    "quantity": 1,
+    "companyname": "Mi India",
+    "brand": "Mi",
+    "description": "Lightweight fitness band with health tracking, AMOLED display, and extended battery life.",
+    "color": "Black",
+    "material": "Silicone",
+    "about": [
+      "AMOLED display",
+      "Health monitoring",
+      "Sleep tracking",
+      "Step counter",
+      "Long battery",
+      "Water resistant",
+      "Lightweight",
+      "Touch controls",
+      "Mobile notifications",
+      "Comfortable wear"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1551817958-20204d6ab2a5",
+      "https://images.unsplash.com/photo-1546868871-7041f2a55e12",
+      "https://images.unsplash.com/photo-1517433456452-f9633a875f6f",
+      "https://images.unsplash.com/photo-1579586337278-3befd40fd17a",
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30"
+    ],
+    "discount": 20,
+    "size": { "height": "42mm", "weight": "32g" },
+    "categories": ["Smart Devices", "Wearables", "Fitness Bands"]
+  },
+
+  {
+    "id": "ACC-2016",
+    "name": "OTG USB Adapter",
+    "price": 299,
+    "quantity": 1,
+    "companyname": "SanDisk",
+    "brand": "SanDisk",
+    "description": "USB OTG adapter for connecting pendrives and peripherals directly to mobile devices.",
+    "color": "Black",
+    "material": "Plastic",
+    "about": [
+      "OTG support",
+      "Plug and play",
+      "Compact size",
+      "Lightweight",
+      "Durable build",
+      "Wide compatibility",
+      "Fast data access",
+      "Easy usage",
+      "Portable",
+      "Affordable"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1593642532973-d31b6557fa68",
+      "https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6",
+      "https://images.unsplash.com/photo-1583863788434-e58a36330cf0",
+      "https://images.unsplash.com/photo-1603791440384-56cd371ee9a7",
+      "https://images.unsplash.com/photo-1580910051074-3eb694886505"
+    ],
+    "discount": 35,
+    "size": { "height": "3cm", "weight": "15g" },
+    "categories": ["Mobile Accessories", "Adapters", "Storage"]
+  },
+
+  {
+    "id": "ACC-2017",
+    "name": "Mobile Cleaning Kit",
+    "price": 399,
+    "quantity": 1,
+    "companyname": "Portronics",
+    "brand": "Portronics",
+    "description": "Complete mobile cleaning kit for screens, ports and device hygiene.",
+    "color": "White",
+    "material": "Plastic",
+    "about": [
+      "Screen cleaning",
+      "Port cleaning",
+      "Anti-static cloth",
+      "Safe liquid",
+      "Reusable",
+      "Compact kit",
+      "Easy usage",
+      "Travel friendly",
+      "Dust removal",
+      "Affordable"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1580910051074-3eb694886505",
+      "https://images.unsplash.com/photo-1593642532973-d31b6557fa68",
+      "https://images.unsplash.com/photo-1603791440384-56cd371ee9a7",
+      "https://images.unsplash.com/photo-1583863788434-e58a36330cf0",
+      "https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6"
+    ],
+    "discount": 30,
+    "size": { "height": "10cm", "weight": "90g" },
+    "categories": ["Mobile Accessories", "Cleaning", "Utility"]
+  },
+
+  {
+    "id": "ACC-2018",
+    "name": "Mobile Gaming Triggers",
+    "price": 899,
+    "quantity": 1,
+    "companyname": "Redgear",
+    "brand": "Redgear",
+    "description": "Physical gaming triggers designed for enhanced mobile gaming performance.",
+    "color": "Black",
+    "material": "Plastic",
+    "about": [
+      "Improved gaming control",
+      "Responsive triggers",
+      "Ergonomic design",
+      "Easy installation",
+      "Lightweight",
+      "Durable build",
+      "No screen damage",
+      "Portable",
+      "Competitive gaming",
+      "Affordable upgrade"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1611078489935-0cb964de46d6",
+      "https://images.unsplash.com/photo-1606813909355-aa54d63a6a33",
+      "https://images.unsplash.com/photo-1511512578047-dfb367046420",
+      "https://images.unsplash.com/photo-1585079542156-2755d9c8a094",
+      "https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa"
+    ],
+    "discount": 25,
+    "size": { "height": "5cm", "weight": "80g" },
+    "categories": ["Mobile Accessories", "Gaming", "Controllers"]
+  },
+  {
+    "id": "ACC-2041",
+    "name": "Fast Charging Power Bank 20000mAh",
+    "price": 2499,
+    "quantity": 1,
+    "companyname": "Realme Accessories",
+    "brand": "Realme",
+    "description": "High-capacity power bank with fast charging support, dual USB output, and strong safety protection.",
+    "color": "Black",
+    "material": "Plastic",
+    "about": [
+      "20000mAh capacity",
+      "Fast charging support",
+      "Dual USB output",
+      "Overcharge protection",
+      "Compact design",
+      "Durable casing",
+      "LED indicator",
+      "Travel friendly",
+      "Safe charging",
+      "Reliable performance"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1609592474845-ec57f0f84f35",
+      "https://images.unsplash.com/photo-1583863788434-e58a36330cf0",
+      "https://images.unsplash.com/photo-1593642532973-d31b6557fa68",
+      "https://images.unsplash.com/photo-1603791440384-56cd371ee9a7",
+      "https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6"
+    ],
+    "discount": 20,
+    "size": { "height": "15cm", "weight": "420g" },
+    "categories": ["Mobile Accessories", "Power Banks", "Charging"]
+  },
+  {
+    "id": "ACC-2042",
+    "name": "True Wireless Earbuds",
+    "price": 2999,
+    "quantity": 1,
+    "companyname": "boAt Audio",
+    "brand": "boAt",
+    "description": "True wireless earbuds with immersive sound, touch controls, and compact charging case.",
+    "color": "White",
+    "material": "Plastic",
+    "about": [
+      "Wireless freedom",
+      "Deep bass sound",
+      "Touch controls",
+      "Compact case",
+      "Fast pairing",
+      "Long battery life",
+      "Sweat resistant",
+      "Lightweight design",
+      "Clear calls",
+      "Portable charging case"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1590658268037-6bf12165a8df",
+      "https://images.unsplash.com/photo-1600294037681-c80b4cb5b434",
+      "https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb",
+      "https://images.unsplash.com/photo-1629984557780-4dde229a83f9",
+      "https://images.unsplash.com/photo-1585386959984-a4155228f0e0"
+    ],
+    "discount": 22,
+    "size": { "height": "Case 5cm", "weight": "55g" },
+    "categories": ["Mobile Accessories", "Audio", "Earbuds"]
+  },
+  {
+    "id": "ACC-2043",
+    "name": "USB Type-C Data Cable",
+    "price": 399,
+    "quantity": 1,
+    "companyname": "Anker India",
+    "brand": "Anker",
+    "description": "Durable Type-C data cable supporting fast charging and high-speed data transfer.",
+    "color": "Black",
+    "material": "Nylon Braided",
+    "about": [
+      "Fast charging",
+      "High-speed data",
+      "Nylon braided",
+      "Tangle-free",
+      "Strong connectors",
+      "Long lifespan",
+      "Universal compatibility",
+      "Flexible cable",
+      "Compact storage",
+      "Reliable quality"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1583863788434-e58a36330cf0",
+      "https://images.unsplash.com/photo-1603791440384-56cd371ee9a7",
+      "https://images.unsplash.com/photo-1593642532973-d31b6557fa68",
+      "https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6",
+      "https://images.unsplash.com/photo-1580910051074-3eb694886505"
+    ],
+    "discount": 35,
+    "size": { "height": "1m", "weight": "40g" },
+    "categories": ["Mobile Accessories", "Cables", "Charging"]
+  },
+  {
+    "id": "ACC-2044",
+    "name": "Mobile Tripod Stand",
+    "price": 1199,
+    "quantity": 1,
+    "companyname": "Digitek",
+    "brand": "Digitek",
+    "description": "Adjustable mobile tripod stand ideal for photography, video recording, and content creation.",
+    "color": "Black",
+    "material": "Aluminium",
+    "about": [
+      "Stable tripod",
+      "Adjustable height",
+      "Lightweight",
+      "Strong grip",
+      "Easy setup",
+      "Foldable design",
+      "Durable material",
+      "Travel friendly",
+      "Multi-angle shots",
+      "Content creator friendly"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1504274066651-8d31a536b11a",
+      "https://images.unsplash.com/photo-1519183071298-a2962be90b8e",
+      "https://images.unsplash.com/photo-1516035069371-29a1b244cc32",
+      "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f",
+      "https://images.unsplash.com/photo-1549923746-c502d488b3ea"
+    ],
+    "discount": 18,
+    "size": { "height": "45cm", "weight": "600g" },
+    "categories": ["Mobile Accessories", "Photography", "Tripods"]
+  },
+  {
+    "id": "ACC-2045",
+    "name": "Foldable Mobile Stand",
+    "price": 499,
+    "quantity": 1,
+    "companyname": "Amazon Basics",
+    "brand": "Amazon Basics",
+    "description": "Portable foldable mobile stand suitable for desk use, video calls, and media consumption.",
+    "color": "Silver",
+    "material": "Aluminium",
+    "about": [
+      "Foldable design",
+      "Stable base",
+      "Adjustable angle",
+      "Lightweight",
+      "Desk friendly",
+      "Durable metal",
+      "Portable size",
+      "Anti-slip pads",
+      "Universal support",
+      "Minimal design"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9",
+      "https://images.unsplash.com/photo-1598327105666-5b89351aff97",
+      "https://images.unsplash.com/photo-1603898037225-70cdd6e2f9d7",
+      "https://images.unsplash.com/photo-1616348436168-de43ad0db179",
+      "https://images.unsplash.com/photo-1580910051074-3eb694886505"
+    ],
+    "discount": 30,
+    "size": { "height": "12cm", "weight": "150g" },
+    "categories": ["Mobile Accessories", "Stands", "Utility"]
+  },
+  {
+    "id": "ACC-2046",
+    "name": "Mobile Camera Lens Kit",
+    "price": 1499,
+    "quantity": 1,
+    "companyname": "Apexel",
+    "brand": "Apexel",
+    "description": "Clip-on mobile camera lens kit for wide-angle, macro, and fisheye photography.",
+    "color": "Black",
+    "material": "Metal & Glass",
+    "about": [
+      "Wide-angle lens",
+      "Macro photography",
+      "Easy clip-on",
+      "Portable kit",
+      "Clear image quality",
+      "Durable build",
+      "Lightweight",
+      "Creative shots",
+      "Travel friendly",
+      "Beginner friendly"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519183071298-a2962be90b8e",
+      "https://images.unsplash.com/photo-1504274066651-8d31a536b11a",
+      "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f",
+      "https://images.unsplash.com/photo-1516035069371-29a1b244cc32",
+      "https://images.unsplash.com/photo-1549923746-c502d488b3ea"
+    ],
+    "discount": 25,
+    "size": { "height": "Lens 3cm", "weight": "95g" },
+    "categories": ["Mobile Accessories", "Photography", "Camera Lenses"]
+  },
+  {
+    "id": "ACC-2047",
+    "name": "Mobile Screen Cleaner Spray",
+    "price": 249,
+    "quantity": 1,
+    "companyname": "Stuffcool",
+    "brand": "Stuffcool",
+    "description": "Alcohol-free screen cleaner spray for phones, tablets, and laptop screens.",
+    "color": "Transparent",
+    "material": "Liquid & Plastic",
+    "about": [
+      "Alcohol free",
+      "Streak-free cleaning",
+      "Safe on screens",
+      "Compact bottle",
+      "Easy spray",
+      "Reusable",
+      "Dust removal",
+      "Fingerprint removal",
+      "Travel size",
+      "Affordable"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1580910051074-3eb694886505",
+      "https://images.unsplash.com/photo-1593642532973-d31b6557fa68",
+      "https://images.unsplash.com/photo-1603791440384-56cd371ee9a7",
+      "https://images.unsplash.com/photo-1583863788434-e58a36330cf0",
+      "https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6"
+    ],
+    "discount": 40,
+    "size": { "height": "8cm", "weight": "70g" },
+    "categories": ["Mobile Accessories", "Cleaning", "Utility"]
+  },
+  {
+    "id": "ACC-2048",
+    "name": "Bluetooth Selfie Stick",
+    "price": 899,
+    "quantity": 1,
+    "companyname": "Syvo",
+    "brand": "Syvo",
+    "description": "Bluetooth-enabled selfie stick with extendable rod and stable grip.",
+    "color": "Black",
+    "material": "Aluminium",
+    "about": [
+      "Bluetooth remote",
+      "Extendable rod",
+      "Stable grip",
+      "Lightweight",
+      "Easy pairing",
+      "Portable design",
+      "Durable build",
+      "Travel friendly",
+      "One-button control",
+      "Good reach"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f",
+      "https://images.unsplash.com/photo-1519183071298-a2962be90b8e",
+      "https://images.unsplash.com/photo-1504274066651-8d31a536b11a",
+      "https://images.unsplash.com/photo-1516035069371-29a1b244cc32",
+      "https://images.unsplash.com/photo-1549923746-c502d488b3ea"
+    ],
+    "discount": 28,
+    "size": { "height": "70cm", "weight": "210g" },
+    "categories": ["Mobile Accessories", "Photography", "Selfie Sticks"]
+  },
+  {
+    "id": "ACC-2049",
+    "name": "Mobile Finger Grip Holder",
+    "price": 199,
+    "quantity": 1,
+    "companyname": "PopSockets",
+    "brand": "PopSockets",
+    "description": "Compact finger grip holder for improved phone handling and grip support.",
+    "color": "Multicolor",
+    "material": "Plastic",
+    "about": [
+      "Improved grip",
+      "Compact size",
+      "Easy attachment",
+      "Lightweight",
+      "Comfortable use",
+      "Stylish design",
+      "Durable adhesive",
+      "One-hand use",
+      "Portable",
+      "Affordable"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9",
+      "https://images.unsplash.com/photo-1598327105666-5b89351aff97",
+      "https://images.unsplash.com/photo-1603898037225-70cdd6e2f9d7",
+      "https://images.unsplash.com/photo-1616348436168-de43ad0db179",
+      "https://images.unsplash.com/photo-1580910051074-3eb694886505"
+    ],
+    "discount": 45,
+    "size": { "height": "4cm", "weight": "20g" },
+    "categories": ["Mobile Accessories", "Grips", "Utility"]
+  },
+  {
+    "id": "ACC-2050",
+    "name": "Mobile Cooling Fan",
+    "price": 1299,
+    "quantity": 1,
+    "companyname": "Black Shark",
+    "brand": "Black Shark",
+    "description": "Clip-on mobile cooling fan designed to reduce heat during extended gaming sessions.",
+    "color": "Black",
+    "material": "Plastic & Metal",
+    "about": [
+      "Active cooling",
+      "Gaming focused",
+      "Clip-on design",
+      "Low noise",
+      "Compact build",
+      "Heat reduction",
+      "Improves performance",
+      "USB powered",
+      "Lightweight",
+      "Durable design"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1611078489935-0cb964de46d6",
+      "https://images.unsplash.com/photo-1606813909355-aa54d63a6a33",
+      "https://images.unsplash.com/photo-1511512578047-dfb367046420",
+      "https://images.unsplash.com/photo-1585079542156-2755d9c8a094",
+      "https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa"
+    ],
+    "discount": 20,
+    "size": { "height": "6cm", "weight": "120g" },
+    "categories": ["Mobile Accessories", "Gaming", "Cooling"]
+  },
+  {
+    "id": "ACC-2041",
+    "name": "Fast Charging Power Bank 20000mAh",
+    "price": 2499,
+    "quantity": 1,
+    "companyname": "Realme Accessories",
+    "brand": "Realme",
+    "description": "High-capacity power bank with fast charging support, dual USB output, and strong safety protection.",
+    "color": "Black",
+    "material": "Plastic",
+    "about": [
+      "20000mAh capacity",
+      "Fast charging support",
+      "Dual USB output",
+      "Overcharge protection",
+      "Compact design",
+      "Durable casing",
+      "LED indicator",
+      "Travel friendly",
+      "Safe charging",
+      "Reliable performance"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1609592474845-ec57f0f84f35",
+      "https://images.unsplash.com/photo-1583863788434-e58a36330cf0",
+      "https://images.unsplash.com/photo-1593642532973-d31b6557fa68",
+      "https://images.unsplash.com/photo-1603791440384-56cd371ee9a7",
+      "https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6"
+    ],
+    "discount": 20,
+    "size": { "height": "15cm", "weight": "420g" },
+    "categories": ["Mobile Accessories", "Power Banks", "Charging"]
+  },
+  {
+    "id": "ACC-2042",
+    "name": "True Wireless Earbuds",
+    "price": 2999,
+    "quantity": 1,
+    "companyname": "boAt Audio",
+    "brand": "boAt",
+    "description": "True wireless earbuds with immersive sound, touch controls, and compact charging case.",
+    "color": "White",
+    "material": "Plastic",
+    "about": [
+      "Wireless freedom",
+      "Deep bass sound",
+      "Touch controls",
+      "Compact case",
+      "Fast pairing",
+      "Long battery life",
+      "Sweat resistant",
+      "Lightweight design",
+      "Clear calls",
+      "Portable charging case"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1590658268037-6bf12165a8df",
+      "https://images.unsplash.com/photo-1600294037681-c80b4cb5b434",
+      "https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb",
+      "https://images.unsplash.com/photo-1629984557780-4dde229a83f9",
+      "https://images.unsplash.com/photo-1585386959984-a4155228f0e0"
+    ],
+    "discount": 22,
+    "size": { "height": "Case 5cm", "weight": "55g" },
+    "categories": ["Mobile Accessories", "Audio", "Earbuds"]
+  },
+  {
+    "id": "ACC-2043",
+    "name": "USB Type-C Data Cable",
+    "price": 399,
+    "quantity": 1,
+    "companyname": "Anker India",
+    "brand": "Anker",
+    "description": "Durable Type-C data cable supporting fast charging and high-speed data transfer.",
+    "color": "Black",
+    "material": "Nylon Braided",
+    "about": [
+      "Fast charging",
+      "High-speed data",
+      "Nylon braided",
+      "Tangle-free",
+      "Strong connectors",
+      "Long lifespan",
+      "Universal compatibility",
+      "Flexible cable",
+      "Compact storage",
+      "Reliable quality"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1583863788434-e58a36330cf0",
+      "https://images.unsplash.com/photo-1603791440384-56cd371ee9a7",
+      "https://images.unsplash.com/photo-1593642532973-d31b6557fa68",
+      "https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6",
+      "https://images.unsplash.com/photo-1580910051074-3eb694886505"
+    ],
+    "discount": 35,
+    "size": { "height": "1m", "weight": "40g" },
+    "categories": ["Mobile Accessories", "Cables", "Charging"]
+  },
+  {
+    "id": "ACC-2044",
+    "name": "Mobile Tripod Stand",
+    "price": 1199,
+    "quantity": 1,
+    "companyname": "Digitek",
+    "brand": "Digitek",
+    "description": "Adjustable mobile tripod stand ideal for photography, video recording, and content creation.",
+    "color": "Black",
+    "material": "Aluminium",
+    "about": [
+      "Stable tripod",
+      "Adjustable height",
+      "Lightweight",
+      "Strong grip",
+      "Easy setup",
+      "Foldable design",
+      "Durable material",
+      "Travel friendly",
+      "Multi-angle shots",
+      "Content creator friendly"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1504274066651-8d31a536b11a",
+      "https://images.unsplash.com/photo-1519183071298-a2962be90b8e",
+      "https://images.unsplash.com/photo-1516035069371-29a1b244cc32",
+      "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f",
+      "https://images.unsplash.com/photo-1549923746-c502d488b3ea"
+    ],
+    "discount": 18,
+    "size": { "height": "45cm", "weight": "600g" },
+    "categories": ["Mobile Accessories", "Photography", "Tripods"]
+  },
+  {
+    "id": "ACC-2045",
+    "name": "Foldable Mobile Stand",
+    "price": 499,
+    "quantity": 1,
+    "companyname": "Amazon Basics",
+    "brand": "Amazon Basics",
+    "description": "Portable foldable mobile stand suitable for desk use, video calls, and media consumption.",
+    "color": "Silver",
+    "material": "Aluminium",
+    "about": [
+      "Foldable design",
+      "Stable base",
+      "Adjustable angle",
+      "Lightweight",
+      "Desk friendly",
+      "Durable metal",
+      "Portable size",
+      "Anti-slip pads",
+      "Universal support",
+      "Minimal design"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9",
+      "https://images.unsplash.com/photo-1598327105666-5b89351aff97",
+      "https://images.unsplash.com/photo-1603898037225-70cdd6e2f9d7",
+      "https://images.unsplash.com/photo-1616348436168-de43ad0db179",
+      "https://images.unsplash.com/photo-1580910051074-3eb694886505"
+    ],
+    "discount": 30,
+    "size": { "height": "12cm", "weight": "150g" },
+    "categories": ["Mobile Accessories", "Stands", "Utility"]
+  },
+  {
+    "id": "ACC-2046",
+    "name": "Mobile Camera Lens Kit",
+    "price": 1499,
+    "quantity": 1,
+    "companyname": "Apexel",
+    "brand": "Apexel",
+    "description": "Clip-on mobile camera lens kit for wide-angle, macro, and fisheye photography.",
+    "color": "Black",
+    "material": "Metal & Glass",
+    "about": [
+      "Wide-angle lens",
+      "Macro photography",
+      "Easy clip-on",
+      "Portable kit",
+      "Clear image quality",
+      "Durable build",
+      "Lightweight",
+      "Creative shots",
+      "Travel friendly",
+      "Beginner friendly"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1519183071298-a2962be90b8e",
+      "https://images.unsplash.com/photo-1504274066651-8d31a536b11a",
+      "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f",
+      "https://images.unsplash.com/photo-1516035069371-29a1b244cc32",
+      "https://images.unsplash.com/photo-1549923746-c502d488b3ea"
+    ],
+    "discount": 25,
+    "size": { "height": "Lens 3cm", "weight": "95g" },
+    "categories": ["Mobile Accessories", "Photography", "Camera Lenses"]
+  },
+  {
+    "id": "ACC-2047",
+    "name": "Mobile Screen Cleaner Spray",
+    "price": 249,
+    "quantity": 1,
+    "companyname": "Stuffcool",
+    "brand": "Stuffcool",
+    "description": "Alcohol-free screen cleaner spray for phones, tablets, and laptop screens.",
+    "color": "Transparent",
+    "material": "Liquid & Plastic",
+    "about": [
+      "Alcohol free",
+      "Streak-free cleaning",
+      "Safe on screens",
+      "Compact bottle",
+      "Easy spray",
+      "Reusable",
+      "Dust removal",
+      "Fingerprint removal",
+      "Travel size",
+      "Affordable"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1580910051074-3eb694886505",
+      "https://images.unsplash.com/photo-1593642532973-d31b6557fa68",
+      "https://images.unsplash.com/photo-1603791440384-56cd371ee9a7",
+      "https://images.unsplash.com/photo-1583863788434-e58a36330cf0",
+      "https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6"
+    ],
+    "discount": 40,
+    "size": { "height": "8cm", "weight": "70g" },
+    "categories": ["Mobile Accessories", "Cleaning", "Utility"]
+  },
+  {
+    "id": "ACC-2048",
+    "name": "Bluetooth Selfie Stick",
+    "price": 899,
+    "quantity": 1,
+    "companyname": "Syvo",
+    "brand": "Syvo",
+    "description": "Bluetooth-enabled selfie stick with extendable rod and stable grip.",
+    "color": "Black",
+    "material": "Aluminium",
+    "about": [
+      "Bluetooth remote",
+      "Extendable rod",
+      "Stable grip",
+      "Lightweight",
+      "Easy pairing",
+      "Portable design",
+      "Durable build",
+      "Travel friendly",
+      "One-button control",
+      "Good reach"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f",
+      "https://images.unsplash.com/photo-1519183071298-a2962be90b8e",
+      "https://images.unsplash.com/photo-1504274066651-8d31a536b11a",
+      "https://images.unsplash.com/photo-1516035069371-29a1b244cc32",
+      "https://images.unsplash.com/photo-1549923746-c502d488b3ea"
+    ],
+    "discount": 28,
+    "size": { "height": "70cm", "weight": "210g" },
+    "categories": ["Mobile Accessories", "Photography", "Selfie Sticks"]
+  },
+  {
+    "id": "ACC-2049",
+    "name": "Mobile Finger Grip Holder",
+    "price": 199,
+    "quantity": 1,
+    "companyname": "PopSockets",
+    "brand": "PopSockets",
+    "description": "Compact finger grip holder for improved phone handling and grip support.",
+    "color": "Multicolor",
+    "material": "Plastic",
+    "about": [
+      "Improved grip",
+      "Compact size",
+      "Easy attachment",
+      "Lightweight",
+      "Comfortable use",
+      "Stylish design",
+      "Durable adhesive",
+      "One-hand use",
+      "Portable",
+      "Affordable"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9",
+      "https://images.unsplash.com/photo-1598327105666-5b89351aff97",
+      "https://images.unsplash.com/photo-1603898037225-70cdd6e2f9d7",
+      "https://images.unsplash.com/photo-1616348436168-de43ad0db179",
+      "https://images.unsplash.com/photo-1580910051074-3eb694886505"
+    ],
+    "discount": 45,
+    "size": { "height": "4cm", "weight": "20g" },
+    "categories": ["Mobile Accessories", "Grips", "Utility"]
+  },
+  {
+    "id": "ACC-2050",
+    "name": "Mobile Cooling Fan",
+    "price": 1299,
+    "quantity": 1,
+    "companyname": "Black Shark",
+    "brand": "Black Shark",
+    "description": "Clip-on mobile cooling fan designed to reduce heat during extended gaming sessions.",
+    "color": "Black",
+    "material": "Plastic & Metal",
+    "about": [
+      "Active cooling",
+      "Gaming focused",
+      "Clip-on design",
+      "Low noise",
+      "Compact build",
+      "Heat reduction",
+      "Improves performance",
+      "USB powered",
+      "Lightweight",
+      "Durable design"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1611078489935-0cb964de46d6",
+      "https://images.unsplash.com/photo-1606813909355-aa54d63a6a33",
+      "https://images.unsplash.com/photo-1511512578047-dfb367046420",
+      "https://images.unsplash.com/photo-1585079542156-2755d9c8a094",
+      "https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa"
+    ],
+    "discount": 20,
+    "size": { "height": "6cm", "weight": "120g" },
+    "categories": ["Service", "Gaming", "Cooling"]
+  },
+  {
+    "id": "MB-1001",
+    "name": "iPhone 14",
+    "price": 69999,
+    "quantity": 1,
+    "companyname": "Apple Inc.",
+    "brand": "Apple",
+    "description": "Premium smartphone with powerful performance, advanced camera system, and long-term software support.",
+    "color": "Midnight",
+    "material": "Glass & Aluminum",
+    "about": [
+      "A15 Bionic chip",
+      "Super Retina XDR display",
+      "Advanced dual-camera system",
+      "Excellent video recording",
+      "iOS ecosystem support",
+      "Strong security features",
+      "Long software updates",
+      "Premium build quality",
+      "Fast performance",
+      "Reliable battery life"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1661961112951-faa0e83c9f20",
+      "https://images.unsplash.com/photo-1661961112605-53db38c94d16",
+      "https://images.unsplash.com/photo-1661961112278-bffb9e5c6d27",
+      "https://images.unsplash.com/photo-1661961112962-6e4b9c1b4d5a",
+      "https://images.unsplash.com/photo-1661961112998-bd1cdb7a8a6e"
+    ],
+    "discount": 10,
+    "size": { "ram": "6GB", "storage": "128GB" },
+    "categories": ["Mobile Phones", "Smartphones", "iOS"]
+  },
+  {
+    "id": "MB-1002",
+    "name": "Samsung Galaxy S23",
+    "price": 74999,
+    "quantity": 1,
+    "companyname": "Samsung Electronics",
+    "brand": "Samsung",
+    "description": "Flagship Android phone with high-end performance, premium display, and pro-grade camera.",
+    "color": "Phantom Black",
+    "material": "Glass & Aluminum",
+    "about": [
+      "Snapdragon 8 Gen processor",
+      "Dynamic AMOLED display",
+      "High refresh rate",
+      "Excellent low-light camera",
+      "Premium design",
+      "Fast charging support",
+      "One UI experience",
+      "5G connectivity",
+      "Stereo speakers",
+      "Reliable battery"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1674574124348-2e6a8e8d2f1f",
+      "https://images.unsplash.com/photo-1674574124424-77b6c2b5e7a1",
+      "https://images.unsplash.com/photo-1674574124462-7b0b5b9e8c6e",
+      "https://images.unsplash.com/photo-1674574124491-63b8c4f6a6c2",
+      "https://images.unsplash.com/photo-1674574124527-fd4c8b7d3a9e"
+    ],
+    "discount": 12,
+    "size": { "ram": "8GB", "storage": "256GB" },
+    "categories": ["Mobile Phones", "Smartphones", "Android"]
+  },
+  {
+    "id": "MB-1003",
+    "name": "OnePlus 11",
+    "price": 56999,
+    "quantity": 1,
+    "companyname": "OnePlus",
+    "brand": "OnePlus",
+    "description": "Performance-focused smartphone with fast charging and smooth OxygenOS experience.",
+    "color": "Titan Black",
+    "material": "Glass & Metal",
+    "about": [
+      "Flagship Snapdragon chipset",
+      "Fast charging technology",
+      "Smooth OxygenOS",
+      "High refresh rate display",
+      "Strong multitasking",
+      "Premium feel",
+      "Good camera performance",
+      "5G ready",
+      "Minimal UI",
+      "Reliable daily use"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1648737967328-5f6e9b77c7a4",
+      "https://images.unsplash.com/photo-1648737967381-7c0a2a6d3e58",
+      "https://images.unsplash.com/photo-1648737967419-8f3e9d6c7a10",
+      "https://images.unsplash.com/photo-1648737967454-2b4f9a6e8c1d",
+      "https://images.unsplash.com/photo-1648737967487-7e9b5c6a2d91"
+    ],
+    "discount": 15,
+    "size": { "ram": "12GB", "storage": "256GB" },
+    "categories": ["Mobile Phones", "Smartphones", "Android"]
+  },
+  {
+    "id": "MB-1004",
+    "name": "Redmi Note 13 Pro",
+    "price": 24999,
+    "quantity": 1,
+    "companyname": "Xiaomi",
+    "brand": "Redmi",
+    "description": "Value-for-money smartphone with strong camera, AMOLED display, and solid performance.",
+    "color": "Blue",
+    "material": "Glass & Plastic",
+    "about": [
+      "AMOLED display",
+      "High-resolution camera",
+      "Strong battery life",
+      "Fast charging",
+      "MIUI features",
+      "Affordable pricing",
+      "Good daily performance",
+      "Slim design",
+      "5G support",
+      "Reliable hardware"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1616348436168-de43ad0db179",
+      "https://images.unsplash.com/photo-1598327105666-5b89351aff97",
+      "https://images.unsplash.com/photo-1603898037225-70cdd6e2f9d7",
+      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9",
+      "https://images.unsplash.com/photo-1580910051074-3eb694886505"
+    ],
+    "discount": 18,
+    "size": { "ram": "8GB", "storage": "128GB" },
+    "categories": ["Mobile Phones", "Budget Phones", "Android"]
+  },
+  {
+    "id": "MB-1005",
+    "name": "Realme GT Neo",
+    "price": 29999,
+    "quantity": 1,
+    "companyname": "Realme",
+    "brand": "Realme",
+    "description": "Performance-oriented smartphone with gaming-grade processor and sleek design.",
+    "color": "Black",
+    "material": "Plastic & Glass",
+    "about": [
+      "Gaming-focused chipset",
+      "High refresh rate display",
+      "Fast charging",
+      "Good thermal control",
+      "Stylish design",
+      "Strong performance",
+      "Affordable flagship",
+      "5G connectivity",
+      "Smooth UI",
+      "Good battery"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1611078489935-0cb964de46d6",
+      "https://images.unsplash.com/photo-1606813909355-aa54d63a6a33",
+      "https://images.unsplash.com/photo-1511512578047-dfb367046420",
+      "https://images.unsplash.com/photo-1585079542156-2755d9c8a094",
+      "https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa"
+    ],
+    "discount": 20,
+    "size": { "ram": "12GB", "storage": "256GB" },
+    "categories": ["Mobile Phones", "Gaming Phones", "Android"]
+  }
+]
+
+router.get('/' , (req,res)=>{
+    res.send(cartdata)
+})
+
+router.post('/' , (req,res)=>{
+    const {name , price , quantity , id ,  companyname , description , brand , color , Material , About , Images , Discount ,size}  = req.body
+    cartdata.push(req.body)
+    res.status(201).json({
+        message : 'item created ',
+        data : {name , price , quantity , id , companyname , description , brand , color , Material , About, Images ,Discount , size} 
+    })
+})
+
+
+export default router
