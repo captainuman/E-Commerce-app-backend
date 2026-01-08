@@ -11,7 +11,7 @@ router.get('/' , (req,res)=>{
 
 router.post('/' , (req,res)=>{
     const {name , price , quantity , id ,  companyname , description , brand , color , Material , About , Images , Discount ,size}  = req.body
-    orderdata.push(...req.body)
+    orderdata.push(req.body)
     res.status(201).json({
         message : 'item created ',
         data : {name , price , quantity , id , companyname , description , brand , color , Material , About, Images ,Discount , size} 
