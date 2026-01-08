@@ -80,8 +80,7 @@ let orderdata = [
 "Mobile Phones",
 "Mid Range",
 "5G"
-]
-}
+]}
 ]
 
 router.get('/' , (req,res)=>{
