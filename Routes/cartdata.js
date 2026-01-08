@@ -171,9 +171,6 @@ let cartdata =[
     "size": { "ram": "8GB", "storage": "128GB" },
     "categories": ["Mobile Phones", "Mid Range", "Android"]
   },
-
-  // ---------- ACCESSORIES (26–50) ----------
-
   {
     "id": "ACC-2001",
     "name": "65W Fast Charger",
